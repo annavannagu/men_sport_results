@@ -16,7 +16,6 @@ namespace Trascon.Models
         private OleDbDataAdapter _adapter = null;
         string _query = "Select * from [Лист1$]";
 
-
         public XLSAdapter (string file_name)
         {
             _connectionString = ConnectionString(file_name);
@@ -36,7 +35,7 @@ namespace Trascon.Models
         {
 
             adapter = new OleDbDataAdapter(_query, _connectionString);
-            var builder = new OleDbCommandBuilder(adapter);
+            _ = new OleDbCommandBuilder(adapter);
 
         }
 
