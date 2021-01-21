@@ -12,10 +12,11 @@ using Trascon.Cmds;
 using System.Collections.Specialized;
 using System.IO;
 using System.Xml.Serialization;
+using System.Windows;
 
 namespace Trascon
 {
-    public class MainVM: INotifyPropertyChanged
+    public class MainVM : INotifyPropertyChanged
     {
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,12 +34,12 @@ namespace Trascon
             set
             {
                 _Men = value;
-                OnPropertyChanged(nameof(Men));                
+                OnPropertyChanged(nameof(Men));
             }
         }
-        
+
         private readonly List<Man> _men;
-        
+
         public MainVM()
         {
             ////список мужчин из Excel
@@ -47,23 +48,24 @@ namespace Trascon
 
             //список мужчин из XML
             XmlSerializer xmlFormat = new XmlSerializer(typeof(List<Man>));
-            using (Stream fStream = new FileStream("MenCollection.xml", FileMode.Open))
+
+            using (Stream fStream = new FileStream(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + @"\MenCollection.xml", FileMode.Open))
             {
                 _men = (List<Man>)xmlFormat.Deserialize(fStream);
             }
 
-            Men = new ObservableCollection<Man>(_men);            
+            Men = new ObservableCollection<Man>(_men);
         }
 
 
         private ICommand _AddCommand = null;
-        public ICommand AddCommand => _AddCommand ?? (_AddCommand = new RelayCommand(AddMenWindow));     
+        public ICommand AddCommand => _AddCommand ?? (_AddCommand = new RelayCommand(AddMenWindow));
 
-        public void AddMenWindow ()
+        public void AddMenWindow()
         {
             //новое окно с вводом данных нового человека
-            NewMan manWindow = new NewMan();            
-            if (manWindow.ShowDialog()==true)
+            NewMan manWindow = new NewMan();
+            if (manWindow.ShowDialog() == true)
             {
                 if (manWindow.ResponseName != "" && 6 <= manWindow.ResponseGroup && manWindow.ResponseGroup <= 11)
                 {
@@ -80,13 +82,13 @@ namespace Trascon
 
         public void SaveToXML()
         {
-            using (Stream fStream = new FileStream("MenCollection.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+            using (Stream fStream = new FileStream(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + @"\MenCollection.xml", FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 XmlSerializer xmlFormat = new XmlSerializer(typeof(ObservableCollection<Man>));
                 xmlFormat.Serialize(fStream, Men);
-            }            
-        }         
+            }
+        }
     }
 
-    
+
 }
