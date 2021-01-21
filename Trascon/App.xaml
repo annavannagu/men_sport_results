@@ -1,0 +1,12 @@
+﻿<Application x:Class="Trascon.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Trascon"
+             StartupUri="MainWindow.xaml"
+             >
+    <Application.Resources>
+        <ResourceDictionary>
+            <local:MedalConverter x:Key="intToImageConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

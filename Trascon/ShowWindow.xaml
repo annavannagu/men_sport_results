@@ -1,0 +1,200 @@
+﻿<Window x:Class="Trascon.ShowWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Trascon"
+        xmlns:src ="clr-namespace:Trascon"
+        xmlns:scm ="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:dat ="clr-namespace:System.Windows.Data;assembly=PresentationFramework"
+        mc:Ignorable="d"
+        Height="1080" Width="1920"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        FontSize="10"
+        FontFamily="Arial">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/Background.png"/>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+        <GridView x:Key="MenGridView" x:Shared="False" AllowsColumnReorder="False">
+            <GridViewColumn Width="25">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Medal, Converter={StaticResource intToImageConverter}}" HorizontalAlignment="Center"/>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Header="Имя" Width="118">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" Background="{x:Null}" Foreground="Black"/>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="44">
+                <GridViewColumnHeader>
+                    <Image Source="Images/jump.png" HorizontalAlignment="Center"/>
+                </GridViewColumnHeader>
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Jump}" HorizontalAlignment="Center" Background="{x:Null}" Foreground="Black" />
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="44">
+                <GridViewColumnHeader>
+                    <Image Source="Images/flex.png" HorizontalAlignment="Center"/>
+                </GridViewColumnHeader>
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Flex}" HorizontalAlignment="Center" Background="{x:Null}" Foreground="Black" />
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="44">
+                <GridViewColumnHeader>
+                    <Image Source="Images/push.png" HorizontalAlignment="Center"/>
+                </GridViewColumnHeader>
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Push}" HorizontalAlignment="Center" Background="{x:Null}" Foreground="Black"/>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+        </GridView>
+        <DataTemplate x:Key="MenJump">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Name}" Grid.Column="0" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Jump}" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="MenFlex">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Name}" Grid.Column="0" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Flex}" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="MenPush">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Name}" Grid.Column="0" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Push}" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <CollectionViewSource x:Key="Group6" Source="{Binding Men}" Filter="CollectionViewSource_Filter6" IsLiveSortingRequested="True">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription Direction="Descending" PropertyName="Medal"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key="Group7" Source="{Binding Men}" Filter="CollectionViewSource_Filter7" IsLiveSortingRequested="True">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription Direction="Descending" PropertyName="Medal"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key="Group8" Source="{Binding Men}" Filter="CollectionViewSource_Filter8" IsLiveSortingRequested="True">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription Direction="Descending" PropertyName="Medal"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key="Group9" Source="{Binding Men}" Filter="CollectionViewSource_Filter9" IsLiveSortingRequested="True">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription Direction="Descending" PropertyName="Medal"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key="Group10" Source="{Binding Men}" Filter="CollectionViewSource_Filter10" IsLiveSortingRequested="True">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription Direction="Descending" PropertyName="Medal"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key="Group11" Source="{Binding Men}" Filter="CollectionViewSource_Filter11" IsLiveSortingRequested="True">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription Direction="Descending" PropertyName="Medal"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key="jump" Source="{Binding Men}" IsLiveSortingRequested="True">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Jump" Direction="Descending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key="flex" Source="{Binding Men}" IsLiveSortingRequested="True">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Flex" Direction="Descending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key="push" Source="{Binding Men}" IsLiveSortingRequested="True">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Push" Direction="Descending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </Window.Resources>
+
+    <Grid Margin="21,227,19,32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="409"/>
+            <RowDefinition Height="Auto" MinHeight="217"/>
+            <RowDefinition Height="208"/>
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="287"/>
+                <ColumnDefinition Width="31"/>
+                <ColumnDefinition Width="287"/>
+                <ColumnDefinition Width="31"/>
+                <ColumnDefinition Width="288"/>
+                <ColumnDefinition Width="31"/>
+                <ColumnDefinition Width="288"/>
+                <ColumnDefinition Width="31"/>
+                <ColumnDefinition Width="288"/>
+                <ColumnDefinition Width="31"/>
+                <ColumnDefinition Width="288"/>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="Group6" ItemsSource="{Binding Source={StaticResource Group6}}" View="{StaticResource MenGridView}" Grid.Column="0" Background="{x:Null}"/>
+            <ListView x:Name="Group7" ItemsSource="{Binding Source={StaticResource Group7}}" View="{StaticResource MenGridView}" Grid.Column="2" Background="{x:Null}"/>
+            <ListView x:Name="Group8" ItemsSource="{Binding Source={StaticResource Group8}}" View="{StaticResource MenGridView}" Grid.Column="4" Background="{x:Null}"/>
+            <ListView x:Name="Group9" ItemsSource="{Binding Source={StaticResource Group9}}" View="{StaticResource MenGridView}" Grid.Column="6" Background="{x:Null}"/>
+            <ListView x:Name="Group10" ItemsSource="{Binding Source={StaticResource Group10}}" View="{StaticResource MenGridView}" Grid.Column="8" Background="{x:Null}"/>
+            <ListView x:Name="Group11" ItemsSource="{Binding Source={StaticResource Group11}}" View="{StaticResource MenGridView}" Grid.Column="10" Background="{x:Null}"/>
+        </Grid>
+        <Grid Grid.Row="2" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="405"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="288"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="267"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="Jump" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding Source={StaticResource jump}}" Grid.Column="1" ItemTemplate="{StaticResource MenJump}" Background="{x:Null}"/>
+            <ListView x:Name="Flex" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding Source={StaticResource flex}}" Grid.Column="3" ItemTemplate="{StaticResource MenFlex}" Background="{x:Null}"/>
+            <ListView x:Name="Push" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding Source={StaticResource push}}" Grid.Column="5" ItemTemplate="{StaticResource MenPush}" Background="{x:Null}"/>
+        </Grid>
+
+    </Grid>
+</Window>
